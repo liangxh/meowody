@@ -1,0 +1,47 @@
+################ !!!! Git Ignore Config File !!! ################
+# NOTE: This file must be put under root dir of git project!
+#################################################################
+# project ignore files
+.ropeproject/
+json_files/
+*.bac
+*un~
+*bac/
+*.egg
+*.swo
+dbs/
+my_data/
+eggs/
+giphy/
+items/
+logs/
+temp/*
+data/log*
+data/phoenix_log/*
+twistd.pid
+
+# common ignore files
+*.swp
+*.tmp
+*.bak
+.svn/
+
+# Mac files
+.DS_Store
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# general output files
+bin/
+gen/
+out/
+
+
+# Python specific files
+__pycache__/
+build/
+*.egg-info/
+dist/
+config.yaml
+.idea/
