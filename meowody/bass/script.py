@@ -56,7 +56,7 @@ class BassScript(Script):
             for sec_idx, section in enumerate(self.sections):
                 if sec_idx != 0:
                     line.append('|')
-                for note in section:
+                for note_idx, note in enumerate(section):
                     if note.is_rest():
                         if str_idx == len(self.strings) - 3:
                             line.append('=' * note.duration.get_print_len(scale))
@@ -66,7 +66,7 @@ class BassScript(Script):
                         if note.is_mute():
                             line.append('x' + '~' * (note.duration.get_print_len(scale) - 1))
                         elif note.string.name == string.name:
-                            if last_note.is_portamento():
+                            if last_note is not None and last_note.is_portamento():
                                 line.append('~' * note.duration.get_print_len(scale))
                             else:
                                 key = str(note.fret)

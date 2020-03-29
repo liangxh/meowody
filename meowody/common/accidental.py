@@ -14,4 +14,4 @@ class Accidental(object):
 
     @classmethod
     def symbol(cls, v):
-        return {cls.FLAT: 'b', cls.SHARP: '#', cls.DOUBLE_FLAT: 'bb', None: ''}[v]
+        return {cls.FLAT: 'b', cls.SHARP: '#', cls.DOUBLE_FLAT: 'bb', cls.NONE: ''}[v]

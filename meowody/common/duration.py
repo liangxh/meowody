@@ -1,29 +1,35 @@
+import re
+
+
 class Duration(object):
-    t_1 = '0'
-    t_2 = 'a'
+    t_1 = 'o'
+    t_2 = 'e'
     t_4 = 'x'
     t_8 = '-'
     t_16 = '='
 
     str_to_t = {t_1: 1, t_2: 2, t_4: 4, t_8: 8, t_16: 16}
+    _str_pattern = re.compile('^([^.]*)(.*)$')
 
-    def __init__(self, t, add_half=False):
+    def __init__(self, t, add_half=0):
         self.t = t
         self.add_half = add_half
-        if not add_half:
+        if add_half == 0:
             self.a = 1
             self.b = t
         else:
-            self.a = 3
-            self.b = t * 2
+            _multiplier = 2 ** add_half
+            self.a = 2 * _multiplier - 1
+            self.b = t * _multiplier
 
     @classmethod
     def loads(cls, v):
-        add_half = False
-        if v.endswith('.'):
-            add_half = True
-            v = v[:-1]
-        t = cls.str_to_t[v]
+        res = cls._str_pattern.match(v)
+        if res is None:
+            raise Exception('failed to load as duration: {}'.format(v))
+        t_mark, half_mark = res.groups()
+        t = cls.str_to_t[t_mark]
+        add_half = len(half_mark) if half_mark is not None else 0
         return cls(t, add_half)
 
     def get_scale(self):

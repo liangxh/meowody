@@ -4,7 +4,7 @@ from meowody.common.accidental import Accidental
 
 
 class Note(object):
-    _suffix_pattern = re.compile(r'^(\.*)(~?)$')
+    _suffix_pattern = re.compile(r'^([^~]*)(~?)$')
 
     def __init__(self):
         self.octave = 0        # 八度

@@ -5,7 +5,7 @@ from meowody.context import context
 
 
 class NumberedNote(Note):
-    _str_pattern = re.compile(r'^(.*)(\d+)(.*)$')
+    _str_pattern = re.compile(r'^(\D*)(\d+)(.*)$')
 
     def __init__(self, degree=None, accidental=None, octave=None):
         super(NumberedNote, self).__init__()
